@@ -7,23 +7,6 @@ pipeline {
                 echo 'Hello World'
             }
         }
-        stage('Preparation') {
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }
-            steps {
-                sh '''
-                    echo "Checking node and npm versions"
-                    npm --version
-                    node --version
-                    ls -al
-                '''
-            }
-
-        }
         stage('Build'){
             agent {
                 docker {
@@ -34,6 +17,12 @@ pipeline {
                 }
             }
             steps {
+                sh '''
+                    echo "Checking node version"
+                    node --version
+                    npm --version
+                    
+                '''
                 sh '''
                     echo "Building the project"
                     rm -r node_modules
