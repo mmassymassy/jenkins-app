@@ -28,13 +28,14 @@ pipeline {
             agent {
                 docker {
                     image 'node:18-alpine'
+                    args '-u root:root'
                     reuseNode true
+
                 }
             }
             steps {
                 sh '''
                     echo "Building the project"
-                    chown -R 130:139 "/.npm"
                     npm install
                     npm run build
                 '''
