@@ -16,15 +16,20 @@ pipeline {
             }
             steps {
                 sh '''
-                    ls -la
-                    echo 'Building'
+                    echo "Checking node and npm versions"
                     npm --version
-                    chown -R $(whoami) ~/.npm
-                    sudo npm install -g npm
-                    sudo npm ci
-                    npm run build
-                    echo "Build completed"
-                    ls -la
+                    node --version
+                    ls -al
+                '''
+            }
+
+            steps
+            {
+                echo 'Building..'
+                '''
+                echo 'Building..'
+                npm install
+                npm run build
                 '''
             }
         }
