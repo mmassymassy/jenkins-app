@@ -18,7 +18,7 @@ pipeline {
                 sh '''
                     ls -la
                     echo 'Building'
-                    rm -rf node_modules && npm cache clean --force
+                    sudo chown -R $USER node_modules
                     npm install -gf
                     npm i @vue/cli-service
                     npm run build
