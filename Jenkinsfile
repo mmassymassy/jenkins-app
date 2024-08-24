@@ -18,7 +18,7 @@ pipeline {
                 sh '''
                     ls -la
                     echo 'Building'
-                    npm ci
+                    npm install
                     npm i @vue/cli-service
                     npm run build
                     echo "Build completed"
