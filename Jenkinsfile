@@ -19,6 +19,9 @@ pipeline {
                     ls -la
                     echo 'Building'
                     npm --version
+                    m -rf node_modules && npm cache clean --force
+                    rm -rf package-lock.json
+                    npm install -g npm
                     npm ci
                     npm run build
                     echo "Build completed"
