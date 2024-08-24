@@ -34,7 +34,7 @@ pipeline {
             steps {
                 sh '''
                     echo "Building the project"
-                    sudo chown -R 130:139 "/.npm"
+                    chown -R 130:139 "/.npm"
                     npm install
                     npm run build
                 '''
