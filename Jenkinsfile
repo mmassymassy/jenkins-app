@@ -19,11 +19,9 @@ pipeline {
                     ls -la
                     echo 'Building'
                     npm --version
-                    m -rf node_modules && npm cache clean --force
-                    rm -rf package-lock.json
                     chown -R $(whoami) ~/.npm
-                    npm install -g npm
-                    npm ci
+                    sudo npm install -g npm
+                    sudo npm ci
                     npm run build
                     echo "Build completed"
                     ls -la
