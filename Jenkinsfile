@@ -25,9 +25,8 @@ pipeline {
 
             steps
             {
-                echo 'Building..'
-                '''
-                echo 'Building..'
+                sh '''
+                echo "Building.."
                 npm install
                 npm run build
                 '''
