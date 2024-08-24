@@ -18,9 +18,8 @@ pipeline {
                 sh '''
                     ls -la
                     echo 'Building'
-                    sudo chown -R $USER node_modules
-                    npm install -gf
-                    npm i @vue/cli-service
+                    npm --version
+                    npm ci
                     npm run build
                     echo "Build completed"
                     ls -la
