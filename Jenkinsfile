@@ -36,6 +36,7 @@ pipeline {
             steps {
                 sh '''
                     echo "Building the project"
+                    rm -r node_modules
                     npm install
                     npm run build
                 '''
