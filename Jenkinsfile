@@ -7,7 +7,7 @@ pipeline {
                 echo 'Hello World'
             }
         }
-        stage('Build') {
+        stage('Preparation') {
             agent {
                 docker {
                     image 'node:18-alpine'
@@ -23,12 +23,19 @@ pipeline {
                 '''
             }
 
-            steps
-            {
+        }
+        stage('Build'){
+            agent {
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
+            steps {
                 sh '''
-                echo "Building.."
-                npm install
-                npm run build
+                    echo "Building the project"
+                    npm install
+                    npm run build
                 '''
             }
         }
