@@ -31,6 +31,40 @@ pipeline {
                 '''
             }
         }
+        stage("Run tests"){
+            parallel{
+                stage("test1"){
+                    agent {
+                        docker {
+                            image 'node:18-alpine'
+                            args '-u root:root'
+                            reuseNode true
+                        }
+                    }
+                    steps {
+                        sh '''
+                            echo "Running test1"
+                            
+                        '''
+                    }
+                }
+                stage("test2"){
+                    agent {
+                        docker {
+                            image 'node:18-alpine'
+                            args '-u root:root'
+                            reuseNode true
+                        }
+                    }
+                    steps {
+                        sh '''
+                            echo "Running test2"
+                            
+                        '''
+                    }
+                }
+            }
+        }
         stage("Test"){
             agent {
                 docker {
